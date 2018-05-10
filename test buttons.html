@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rotating Circles</title>
+
+    <style>
+		/*All the CSS that should be in a seperate file*/
+        /* http://www.fayd.org/api/
+        http://thecatapi.com/ in case this dont work http://random.cat/view/1006
+
+        */
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        /* This is all necessary for img modal */
+
+        #myImg {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #myImg:hover {
+            opacity: 0.7;
+        }
+
+        /* The Modal (background) */
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content (image) */
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Caption of Modal Image */
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Add Animation */
+
+        .modal-content,
+        #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
+        }
+
+        /* This is all necessary for the fancy buttons */
+
+        .button {
+            border: none;
+            padding: 12px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: .7s;
+            cursor: pointer;
+            border-radius: 15%;
+        }
+
+        .button1 {
+            background-color: blue;
+            color: white;
+        }
+
+        .button1:hover {
+            background-color: #0066ff;
+            color: white;
+        }
+
+        .button2 {
+            background-color: green;
+            color: white;
+        }
+
+        .button2:hover {
+            background-color: #59b300;
+            color: white;
+        }
+    </style>
+    <!--<script src="modernizr-1.6.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body onload="drawBlue(), drawRed(), drawPurple(), drawGreen()">
+
+    <img id="myImg" src="city.png" alt="Trolltunga, Norway" width="300" height="200">
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <div>
+        <button id="imgButton">Img Plz</button>
+        <button id="catBtn">Cat Fact Plz</button>
+        <button id="catBtn2">Cat Image Plz</button>
+        <button id="doggoBtn" class="button2 button" style=" z-index:4; position: absolute; top:680px; left:446px;">Dog Picture</button>
+        <button id="chuckBtn" class="button1 button" style=" z-index:4; position: absolute; top:215px; left:406px;">Chuck Jokes <br> (Warning Bad Jokes!)
+    </button>
+        <div id="chuckTxt">Chuck Joke: </div>
+        <div id="dogImg"></div>
+        <div id="catImg"></div>
+    </div>
+
+    <canvas id="layer1" width="1500" height="800" style="z-index: 1; margin: 0 auto; display: block; position:absolute;left:200px;top:100px; "></canvas>
+    <script type="text/javascript" src="theScript.js"></script>
+
+</body>
+
+</html>
