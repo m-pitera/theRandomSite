@@ -1,6 +1,7 @@
 // JavaScript File
 //https://gamedev.stackexchange.com/questions/58454/is-using-multiple-canvas-objects-a-good-practice
 //http://jsbin.com/aveped/1/edit?html,css
+/*
 var layer1;
 var ctx1;
 
@@ -46,7 +47,7 @@ function drawPurple() {
     ctx1.closePath();
     ctx1.fill();
 }
-
+*/
 //The variables for the API calls
 var numUrl;
 var dogUrl;
@@ -54,10 +55,12 @@ var catUrl;
 var catUrl2;
 var chuckUrl;
 var dogImg;
+var shibImg;
 var catImg;
 
 numUrl = "https://numbersapi.com/random/";
 dogUrl = "https://dog.ceo/api/breeds/image/random";
+shibaUrl = "http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true";
 catUrl = "https://catfact.ninja/fact";
 catUrl2 = "https://thecatapi.com/api/images/get?format=xml";
 chuckUrl = "https://api.chucknorris.io/jokes/random";
@@ -87,6 +90,32 @@ $(document).ready(function() {
             modal.style.display = "block";
             modalImg.src = dogImg.src;
             captionText.innerHTML = "something, a doggo prob";
+
+            //$('#number').text(data); just trouble shooting stuff
+        });
+    });
+
+
+    //this gives Shib img appear
+    $("#shibeBtn").click(function() {
+        console.log("button clicked");
+
+        //fetches url, turns it to json,and pulls data
+        fetch(shibaUrl).then((resp) => resp.json()).then(function(data) {
+
+            //troubleshooting
+            console.log(data);
+            //console.log(data.message);
+
+            //appending the img to html
+            //shibImg.src = data.message;
+            //var src = document.getElementById("dogImg");
+            //src.appendChild(dogImg);
+
+            //make a modal plz
+            //modal.style.display = "block";
+            //modalImg.src = dogImg.src;
+            //captionText.innerHTML = "something, a doggo prob";
 
             //$('#number').text(data); just trouble shooting stuff
         });
@@ -132,7 +161,6 @@ $(document).ready(function() {
 
     $("#chuckBtn").click(function() {
         console.log("button clicked");
-
         //fetches url, turns it to json,and pulls data
         fetch(chuckUrl).then((resp) => resp.json()).then(function(data) {
 
@@ -145,9 +173,11 @@ $(document).ready(function() {
             //var src = document.getElementById("dogImg");
             //src.appendChild(dogImg);
             $('#chuckTxt').text(data.value); //just trouble shooting stuff
+            //$('#chuckTxt').text("Chuck Noris said no more Chuck Noris jokes");
         });
     });
 });
+
 
 //$(function() {
 //    $("#dogBreed").selectmenu();
